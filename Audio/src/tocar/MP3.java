@@ -5,7 +5,7 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
-import javazoom.jl.decoder.Control;
+//import javazoom.jl.decoder.Control;
 
 public class MP3{
 
@@ -47,10 +47,5 @@ public class MP3{
 				status = false;
 			}
 		}*/
-	}
-	
-	//não funciona
-	public void stop(){
-		this.player.close();
 	}
 }

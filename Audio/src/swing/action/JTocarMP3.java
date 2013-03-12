@@ -14,7 +14,7 @@ public class JTocarMP3 extends AbstractAction {
 	private MP3 musica;
 
 	public JTocarMP3(String path) {
-		super("mp3");
+		super("Abrir");
 		this.mp3File = new File(path);
 		this.musica = new MP3(mp3File);
 	}
