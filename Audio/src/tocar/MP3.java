@@ -5,7 +5,6 @@ import java.io.File;
 import java.io.FileInputStream;
 
 import javazoom.jl.player.Player;
-//import javazoom.jl.decoder.Control;
 
 public class MP3{
 
@@ -22,7 +21,7 @@ public class MP3{
 			BufferedInputStream bis = new BufferedInputStream(fis);
 			this.player = new Player(bis);
 		} catch (Exception e) {
-			System.out.println("Problema ao tocar " + mp3);
+			System.out.println("Problema ao carregar " + mp3);
 			e.printStackTrace();
 		}
 		
@@ -35,17 +34,23 @@ public class MP3{
 				}
 			}
 		}.start();
-
+		
 		/*boolean status = true;
 
 		while (!this.player.isComplete() && status) {
 			System.out.println(this.player.getPosition());
 
 			// simulação do stop, talvez skip
-			if (this.player.getPosition() > 1000) {
+			if (this.player.getPosition() > 5000) {
 				this.player.close();
 				status = false;
 			}
 		}*/
+	}
+	
+	public void stop(){
+		if (this.player != null){
+			this.player.close();
+		}
 	}
 }

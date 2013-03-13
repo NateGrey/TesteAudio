@@ -8,13 +8,13 @@ import javax.swing.*;
 import tocar.MP3;
 
 @SuppressWarnings("serial")
-public class JTocarMP3 extends AbstractAction {
+public class JTocarMP3Action extends AbstractAction {
 
 	private File mp3File;
 	private MP3 musica;
 
-	public JTocarMP3(String path) {
-		super("Abrir");
+	public JTocarMP3Action(String path) {
+		super("Play");
 		this.mp3File = new File(path);
 		this.musica = new MP3(mp3File);
 	}
@@ -32,5 +32,6 @@ public class JTocarMP3 extends AbstractAction {
 		}.start();
 		
 		System.out.println(mp3File.getName());
+		System.out.println("Tocando!");
 	}
 }
