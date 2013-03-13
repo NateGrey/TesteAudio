@@ -13,10 +13,15 @@ public class JTocarMP3Action extends AbstractAction {
 	private File mp3File;
 	private MP3 musica;
 
-	public JTocarMP3Action(String path) {
+	public JTocarMP3Action() {
 		super("Play");
-		this.mp3File = new File(path);
+	}
+	
+	private MP3 criarMP3(){
+		this.mp3File = new File("Oasis - Falling Down.mp3");
 		this.musica = new MP3(mp3File);
+		
+		return this.musica;
 	}
 
 	@Override
@@ -24,14 +29,13 @@ public class JTocarMP3Action extends AbstractAction {
 		new Thread() {
 			public void run() {
 				try {
-					musica.play();
+					criarMP3().play();
+					System.out.println(mp3File.getName());
 				} catch (Exception e) {
 					System.out.println(e);
 				}
 			}
 		}.start();
-		
-		System.out.println(mp3File.getName());
 		System.out.println("Tocando!");
 	}
 }

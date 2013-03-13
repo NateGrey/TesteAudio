@@ -9,12 +9,13 @@ import javazoom.jl.player.Player;
 public class MP3{
 
 	private File mp3;
-	private Player player;
+	private static Player player;
 
 	public MP3(File mp3) {
 		this.mp3 = mp3;
 	}
 
+	@SuppressWarnings("static-access")
 	public void play() {
 		try {
 			FileInputStream fis = new FileInputStream(mp3);
@@ -48,6 +49,7 @@ public class MP3{
 		}*/
 	}
 	
+	@SuppressWarnings("static-access")
 	public void stop(){
 		if (this.player != null){
 			this.player.close();

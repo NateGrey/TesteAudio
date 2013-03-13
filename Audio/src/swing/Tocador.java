@@ -18,14 +18,12 @@ public class Tocador{
 		JFrame frame = new JFrame("S.T.A.R");
 		
         frame.setLayout(null);
-        JButton play = new JButton(new JTocarMP3Action(
-				"Oasis - Falling Down.mp3"));
+        JButton play = new JButton(new JTocarMP3Action());
         play.setBounds(30,100,100,50);
         frame.add(play);
         
         frame.setLayout(null);
-		JButton stop = new JButton(new JPararMP3Action(
-				"Oasis - Falling Down.mp3"));
+		JButton stop = new JButton(new JPararMP3Action());
 		stop.setBounds(160,100,100,50);  
 		frame.add(stop);
 		
@@ -36,8 +34,12 @@ public class Tocador{
 		frame.setIconImage(new ImageIcon("star.png").getImage());
 		
 		JMenuBar menubar = new JMenuBar();
-		JMenu file = new JMenu("Mídia");
-		menubar.add(file);
+        JMenu file = new JMenu("Arquivo");
+        menubar.add(file);
+        JMenu acao = new JMenu("Playlist");
+        menubar.add(acao);
+        JMenu help = new JMenu("Ajuda");
+        menubar.add(help);
 		frame.setJMenuBar(menubar);
 		
         frame.pack();
