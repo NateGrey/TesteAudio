@@ -1,29 +1,29 @@
 package swing.action;
 
 import java.awt.event.ActionEvent;
-import java.io.File;
 
 import javax.swing.AbstractAction;
 
 import tocar.MP3;
 
-
 @SuppressWarnings("serial")
 public class JPararMP3Action extends AbstractAction {
-	
-	private File mp3File;
-	private MP3 musica;
 
-	public JPararMP3Action() {
-		super("Stop");	
-		this.mp3File = new File("Oasis - Falling Down.mp3");
-		this.musica = new MP3(mp3File);
+	private MP3 musica;
+	
+	public JPararMP3Action(){
+		
+	}
+
+	public JPararMP3Action(String nome) {
+		super(nome);
+		this.musica = new MP3();
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		
 		musica.stop();
+		musica.setPlayer(null);
 		System.out.println("Parado!");
 	}
 }

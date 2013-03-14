@@ -11,6 +11,10 @@ public class MP3{
 	private File mp3;
 	private static Player player;
 
+	public MP3(){
+		
+	}
+	
 	public MP3(File mp3) {
 		this.mp3 = mp3;
 	}
@@ -36,6 +40,7 @@ public class MP3{
 			}
 		}.start();
 		
+		
 		/*boolean status = true;
 
 		while (!this.player.isComplete() && status) {
@@ -54,5 +59,15 @@ public class MP3{
 		if (this.player != null){
 			this.player.close();
 		}
+	}
+	
+	@SuppressWarnings("static-access")
+	public Player getPlayer(){
+		return this.player;
+	}
+	
+	@SuppressWarnings("static-access")
+	public void setPlayer(Player player){
+		this.player = player;
 	}
 }
