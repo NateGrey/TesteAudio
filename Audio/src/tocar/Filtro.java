@@ -19,7 +19,7 @@ public class Filtro extends FileFilter  {
 
 	@Override
 	public String getDescription() {	
-		return ".mp3";
+		return "Arquivo de Áudio (*.mp3)";
 	}
 
 }

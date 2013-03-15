@@ -10,10 +10,6 @@ import tocar.MP3;
 public class JPararMP3Action extends AbstractAction {
 
 	private MP3 musica;
-	
-	public JPararMP3Action(){
-		
-	}
 
 	public JPararMP3Action(String nome) {
 		super(nome);

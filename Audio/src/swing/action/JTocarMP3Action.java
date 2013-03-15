@@ -15,12 +15,14 @@ public class JTocarMP3Action extends AbstractAction  {
 	private MP3 musica;
 	private JFrame frame; 
 	private FileChooser arquivoMP3;
+	private String nome;
 
 	public JTocarMP3Action(String nome,JFrame frame) {
 		super(nome);
 		this.frame = frame;
 		this.musica = new MP3();
 		this.musica.setPlayer(null);
+		this.nome = nome;
 	}
 
 	private MP3 criarMP3(String path) {
@@ -33,6 +35,11 @@ public class JTocarMP3Action extends AbstractAction  {
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
+		if (this.nome == "Abrir"){
+			this.musica.stop();
+			this.musica.setPlayer(null);
+		}
+			
 		if (this.musica.getPlayer() == null || this.musica.getPlayer().isComplete()) {
 			new Thread() {
 				public void run() {
