@@ -4,7 +4,7 @@ import javax.swing.JFileChooser;
 import javax.swing.JFrame;
 
 public class FileChooser {
-	private String path;
+	private String caminho;
 	
 	public String criarFileChooser(JFrame frame){
 		JFileChooser arquivoMP3 = new JFileChooser();
@@ -14,11 +14,11 @@ public class FileChooser {
 		int retorno = arquivoMP3.showOpenDialog(frame);
 
 		if (retorno == JFileChooser.APPROVE_OPTION) {
-			this.path = arquivoMP3.getSelectedFile().getAbsolutePath();
+			this.caminho = arquivoMP3.getSelectedFile().getAbsolutePath();
 			System.out.println("Abriu!");
-			return this.path;
+			return this.caminho;
 		} else {
-			System.out.println("Não abriu/fechou...");
+			System.out.println("Não abriu/fechou");
 			return "";
 		}
 	}

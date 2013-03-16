@@ -17,7 +17,7 @@ public class JSobreMenuAction extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		System.out.println("Mostrar tela com About...");
+		System.out.println("Mostrar tela com Sobre");
 		JOptionPane
 				.showMessageDialog(
 						frame,

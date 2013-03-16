@@ -1,7 +1,6 @@
 package swing;
 
 import java.awt.BorderLayout;
-import java.awt.CardLayout;
 import java.awt.Dimension;
 import java.awt.GridLayout;
 
@@ -34,11 +33,9 @@ public class Tocador{
 	private static void tela() {
 		
 		JFrame frame = new JFrame("S.T.A.R. PLAYER");
-		
-		CardLayout cards = new CardLayout();
         
-        JPanel principalBotoes = new JPanel(cards);
-        JPanel principalLista = new JPanel(cards);
+        JPanel principalBotoes = new JPanel();
+        JPanel principalLista = new JPanel();
         JPanel botoes = new JPanel(new GridLayout(1,4,10,0));
         JPanel lista = new JPanel(new GridLayout(1,1));   
         

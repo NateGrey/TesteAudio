@@ -11,7 +11,7 @@ import tocar.MP3;
 @SuppressWarnings("serial")
 public class JTocarMP3Action extends AbstractAction  {
 
-	private File mp3File;
+	private File mp3;
 	private MP3 musica;
 	private JFrame frame; 
 	private FileChooser arquivoMP3;
@@ -25,30 +25,29 @@ public class JTocarMP3Action extends AbstractAction  {
 		this.nome = nome;
 	}
 
-	private MP3 criarMP3(String path) {
-		this.mp3File = new File(path);
-		this.musica = new MP3(mp3File);
+	private MP3 criarMP3(String caminho) {
+		this.mp3 = new File(caminho);
+		this.musica = new MP3(mp3);
 
 		return this.musica;
 	}
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-
-		if (this.nome == "Abrir"){
-			this.musica.stop();
-			this.musica.setPlayer(null);
-		}
 			
-		if (this.musica.getPlayer() == null || this.musica.getPlayer().isComplete()) {
+		if (this.musica.getPlayer() == null || this.musica.getPlayer().isComplete() || this.nome == "Abrir") {
 			new Thread() {
 				public void run() {
 					try {
 						arquivoMP3 = new FileChooser();
 						String path = arquivoMP3.criarFileChooser(frame);
 						if (path.endsWith(".mp3")){
+							if (nome == "Abrir"){
+								musica.stop();
+								musica.setPlayer(null);
+							}
 							criarMP3(path).play();
-							System.out.println(mp3File.getName());
+							System.out.println(mp3.getName());
 							System.out.println("Tocando!");
 						}
 					} catch (Exception e) {
@@ -56,7 +55,13 @@ public class JTocarMP3Action extends AbstractAction  {
 					}
 				}
 			}.start();
-		} else
-			System.out.println("futuro pause, maybe...");
+		}else{
+			try {
+				this.musica.pause();
+			} catch (InterruptedException e1) {
+				e1.printStackTrace();
+			}
+			System.out.println("futuro pause/resume");
+		}
 	}
 }

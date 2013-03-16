@@ -10,6 +10,7 @@ public class MP3{
 
 	private File mp3;
 	private static Player player;
+	private Thread thread;
 
 	public MP3(){
 		
@@ -30,7 +31,10 @@ public class MP3{
 			e.printStackTrace();
 		}
 		
-		new Thread() {
+		 this.thread = new ThreadPlay(player); 
+		 this.thread.start();
+		
+		/*new Thread() {
 			public void run() {
 				try {
 					player.play();
@@ -38,7 +42,7 @@ public class MP3{
 					System.out.println(e);
 				}
 			}
-		}.start();
+		}.start();*/
 		
 		
 		/*boolean status = true;
@@ -60,6 +64,17 @@ public class MP3{
 			this.player.close();
 		}
 	}
+	
+	@SuppressWarnings("deprecation")
+	public void pause() throws InterruptedException{
+		this.thread.suspend();
+	}
+	
+	@SuppressWarnings("deprecation")
+	public void resume(){
+		this.thread.resume();
+	}
+	
 	
 	@SuppressWarnings("static-access")
 	public Player getPlayer(){
