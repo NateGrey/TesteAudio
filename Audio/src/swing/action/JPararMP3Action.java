@@ -18,8 +18,11 @@ public class JPararMP3Action extends AbstractAction {
 
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		musica.stop();
-		musica.setPlayer(null);
-		System.out.println("Parado!");
+		
+		if(musica.getPlayer() != null){
+			musica.stop();
+			musica.setPlayer(null);
+			System.out.println("Parado!");
+		}
 	}
 }

@@ -18,7 +18,7 @@ public class FileChooser {
 			System.out.println("Abriu!");
 			return this.caminho;
 		} else {
-			System.out.println("Não abriu/fechou");
+			System.out.println("Não abriu/fechou!");
 			return "";
 		}
 	}

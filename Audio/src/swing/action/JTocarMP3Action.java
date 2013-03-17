@@ -9,15 +9,16 @@ import tocar.FileChooser;
 import tocar.MP3;
 
 @SuppressWarnings("serial")
-public class JTocarMP3Action extends AbstractAction  {
+public class JTocarMP3Action extends AbstractAction {
 
 	private File mp3;
 	private MP3 musica;
-	private JFrame frame; 
+	private JFrame frame;
 	private FileChooser arquivoMP3;
 	private String nome;
+	private static String status;
 
-	public JTocarMP3Action(String nome,JFrame frame) {
+	public JTocarMP3Action(String nome, JFrame frame) {
 		super(nome);
 		this.frame = frame;
 		this.musica = new MP3();
@@ -32,36 +33,53 @@ public class JTocarMP3Action extends AbstractAction  {
 		return this.musica;
 	}
 
+	@SuppressWarnings("static-access")
 	@Override
 	public void actionPerformed(ActionEvent e) {
-			
-		if (this.musica.getPlayer() == null || this.musica.getPlayer().isComplete() || this.nome == "Abrir") {
+		
+		if (this.musica.getPlayer() == null
+				|| this.musica.getPlayer().isComplete() || this.nome == "Abrir") {
 			new Thread() {
 				public void run() {
 					try {
 						arquivoMP3 = new FileChooser();
 						String path = arquivoMP3.criarFileChooser(frame);
-						if (path.endsWith(".mp3")){
-							if (nome == "Abrir"){
+						if (path.endsWith(".mp3")) {
+							if (nome == "Abrir") {
 								musica.stop();
 								musica.setPlayer(null);
 							}
 							criarMP3(path).play();
+							status = "tocando";
 							System.out.println(mp3.getName());
 							System.out.println("Tocando!");
+						} else {
+							if (!path.isEmpty()) {
+								JOptionPane.showMessageDialog(frame,
+										"Arquivo Não Suportado", "Erro ao Abrir Arquivo",
+										JOptionPane.ERROR_MESSAGE);
+								System.out.println("Arquivo Inválido!");
+							}
 						}
 					} catch (Exception e) {
 						System.out.println(e);
 					}
 				}
 			}.start();
-		}else{
+		} else {
 			try {
-				this.musica.pause();
+				if (this.status == "tocando") {
+					this.musica.pause();
+					this.status = "parado";
+					System.out.println("Pause!");
+				} else {
+					this.musica.resume();
+					this.status = "tocando";
+					System.out.println("Resume!");
+				}
 			} catch (InterruptedException e1) {
 				e1.printStackTrace();
 			}
-			System.out.println("futuro pause/resume");
 		}
 	}
 }

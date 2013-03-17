@@ -10,7 +10,7 @@ public class MP3{
 
 	private File mp3;
 	private static Player player;
-	private Thread thread;
+	private static Thread thread;
 
 	public MP3(){
 		
@@ -33,29 +33,6 @@ public class MP3{
 		
 		 this.thread = new ThreadPlay(player); 
 		 this.thread.start();
-		
-		/*new Thread() {
-			public void run() {
-				try {
-					player.play();
-				} catch (Exception e) {
-					System.out.println(e);
-				}
-			}
-		}.start();*/
-		
-		
-		/*boolean status = true;
-
-		while (!this.player.isComplete() && status) {
-			System.out.println(this.player.getPosition());
-
-			// simulação do stop, talvez skip
-			if (this.player.getPosition() > 5000) {
-				this.player.close();
-				status = false;
-			}
-		}*/
 	}
 	
 	@SuppressWarnings("static-access")
@@ -65,13 +42,13 @@ public class MP3{
 		}
 	}
 	
-	@SuppressWarnings("deprecation")
+	@SuppressWarnings({ "deprecation", "static-access" })
 	public void pause() throws InterruptedException{
 		this.thread.suspend();
 	}
 	
-	@SuppressWarnings("deprecation")
-	public void resume(){
+	@SuppressWarnings({ "deprecation", "static-access" })
+	public void resume() throws InterruptedException{
 		this.thread.resume();
 	}
 	

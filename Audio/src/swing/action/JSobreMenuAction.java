@@ -21,7 +21,7 @@ public class JSobreMenuAction extends AbstractAction {
 		JOptionPane
 				.showMessageDialog(
 						frame,
-						"S.T.A.R. PLAYER\n(c) 2013 Charles Pereira Franco\nchar__86@hotmail.com",
+						"STAR MP3 PLAYER\n(c) 2013 Charles Pereira Franco\nchar__86@hotmail.com",
 						"Sobre", JOptionPane.INFORMATION_MESSAGE);
 	}
 }
